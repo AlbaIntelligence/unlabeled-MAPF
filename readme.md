@@ -123,7 +123,7 @@ This software is released under the MIT License, see [LICENCE.txt](LICENCE.txt).
 - The font in `visualizer/bin/data` is from [Google Fonts](https://fonts.google.com/).
 - Scripts for the experiments are in `exp_scripts/`.
 - `tests/` include test scripts.
-  - The implementation of ECBS-TA [2] can be obtained [Wolfgang's excellent repository](https://github.com/whoenig/libMultiRobotPlanning).
+- The implementation of ECBS-TA [2] can be obtained [Wolfgang's excellent repository](https://github.com/whoenig/libMultiRobotPlanning).
 
 ## Author
 Anonymous Authors
