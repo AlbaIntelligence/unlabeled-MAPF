@@ -18,6 +18,7 @@ The implementations include: the makespan optimal algorithm [1] and TSWAP (sub-o
 ## Building
 
 ```
+git clone https://github.com/google/googletest.git third_party/googletest
 mkdir build
 cd build
 cmake ..
@@ -91,13 +92,11 @@ You can test the ILP solver via `-g` option.
 Note: Of course, it is significantly slower than the flow-based algorithm (i.e., Ford-Fulkerson).
 
 ## Visualizer
-
-### Building
-Run as follows at your project directory.
-It takes around 10 minutes.
+### Build
 ```sh
-git clone https://github.com/openframeworks/openFrameworks.git
+git clone https://github.com/openframeworks/openFrameworks.git third_party/openFrameworks
 sh ./openFrameworks/scripts/osx/download_libs.sh
+cp visualizer/libs/libfmodex.dylib third_party/openFrameworks/libs/fmodex/lib/osx/libfmodex.dylib  # overwrite
 cd visualizer/
 make build
 cd ..
