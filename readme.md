@@ -93,73 +93,16 @@ Note: Of course, it is significantly slower than the flow-based algorithm (i.e.,
 
 ## Visualizer
 ### Build
-Unfortunately, [the latest distribution of openFrameworks](https://github.com/openframeworks/openFrameworks/commit/fe591d17e95218569cc2426d1d8f4f646f75fa00) seems to include bugs,
-so you have to edit one file according to the following instructions.
 
 Let's first clone the repo.
 ```sh
 git clone https://github.com/openframeworks/openFrameworks.git third_party/openFrameworks
 ```
 
-Edit two places in `./third_party/openFrameworks/scripts/download_libs.sh` as follows to enable to download [the old libs](http://ci.openframeworks.cc/libs/0.11.0/).
-
-[Before, Line 175](https://github.com/openframeworks/openFrameworks/blob/patch-release/scripts/dev/download_libs.sh#L175)
-
-```sh
-elif [ "$PLATFORM" == "vs2015" ] || [ "$PLATFORM" == "vs2017" ]; then
-    PKGS="openFrameworksLibs_${VER}_${PLATFORM}_${ARCH}_1.zip \
-          openFrameworksLibs_${VER}_${PLATFORM}_${ARCH}_2.zip \
-          openFrameworksLibs_${VER}_${PLATFORM}_${ARCH}_3.zip \
-          openFrameworksLibs_${VER}_${PLATFORM}_${ARCH}_4.zip"
-elif [ "$ARCH" == "" ] && [[ "$PLATFORM" == "osx" || "$PLATFORM" == "ios" || "$PLATFORM" == "tvos" ]]; then
-    PKGS="openFrameworksLibs_${VER}_${PLATFORM}1.tar.bz2 \
-          openFrameworksLibs_${VER}_${PLATFORM}2.tar.bz2 \
-          openFrameworksLibs_${VER}_${PLATFORM}3.tar.bz2 \
-          openFrameworksLibs_${VER}_${PLATFORM}4.tar.bz2"
-```
-
-After
-
-```sh
-elif [ "$PLATFORM" == "vs2015" ] || [ "$PLATFORM" == "vs2017" ]; then
-    PKGS="openFrameworksLibs_${VER}_${PLATFORM}_${ARCH}_1.zip \
-          openFrameworksLibs_${VER}_${PLATFORM}_${ARCH}_2.zip \
-          openFrameworksLibs_${VER}_${PLATFORM}_${ARCH}_3.zip \
-          openFrameworksLibs_${VER}_${PLATFORM}_${ARCH}_4.zip"
-elif [ "$ARCH" == "" ] && [[ "$PLATFORM" == "osx" || "$PLATFORM" == "ios" || "$PLATFORM" == "tvos" ]] && [ "$VER" != "" ]; then
-    PKGS="openFrameworksLibs_master_${PLATFORM}1.tar.bz2 \
-          openFrameworksLibs_master_${PLATFORM}2.tar.bz2 \
-          openFrameworksLibs_master_${PLATFORM}3.tar.bz2 \
-          openFrameworksLibs_master_${PLATFORM}4.tar.bz2"
-elif [ "$ARCH" == "" ] && [[ "$PLATFORM" == "osx" || "$PLATFORM" == "ios" || "$PLATFORM" == "tvos" ]]; then
-    PKGS="openFrameworksLibs_${VER}_${PLATFORM}1.tar.bz2 \
-          openFrameworksLibs_${VER}_${PLATFORM}2.tar.bz2 \
-          openFrameworksLibs_${VER}_${PLATFORM}3.tar.bz2 \
-          openFrameworksLibs_${VER}_${PLATFORM}4.tar.bz2"
-```
-
-[Before, Line 193](https://github.com/openframeworks/openFrameworks/blob/patch-release/scripts/dev/download_libs.sh#L193)
-```sh
-for PKG in $PKGS; do
-    download $PKG
-done
-```
-
-After
-```sh
-for PKG in $PKGS; do
-    if [ "$VER" != "" ]; then
-        download $VER/$PKG
-    else
-        download $PKG
-    fi
-done
-```
-
 Next, build as follows.
 It takes around 10 minutes.
 ```sh
-sh ./third_party/openFrameworks/scripts/osx/download_libs.sh -v 0.11.0
+sh ./third_party/openFrameworks/scripts/osx/download_libs.sh
 cd visualizer/
 make build
 cd ..
