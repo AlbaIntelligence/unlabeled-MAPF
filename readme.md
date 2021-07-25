@@ -9,11 +9,6 @@ The visualizer uses [openFrameworks](https://openframeworks.cc).
 
 The implementations include: the makespan optimal algorithm [1] and TSWAP (sub-optimal, complete).
 
-| platform | status (public) | status (dev) |
-| ---: | :--- |:--- |
-| macos-10.15 | ![test_macos](https://github.com/Kei18/unlabeled-MAPF/workflows/test_macos/badge.svg?branch=public) ![build_visualizer_macos](https://github.com/Kei18/unlabeled-MAPF/workflows/build_visualizer_macos/badge.svg?branch=public) | ![test_macos](https://github.com/Kei18/unlabeled-MAPF/workflows/test_macos/badge.svg?branch=dev) ![build_visualizer_macos](https://github.com/Kei18/unlabeled-MAPF/workflows/build_visualizer_macos/badge.svg?branch=dev) |
-| ubuntu-latest | ![test_ubuntu](https://github.com/Kei18/unlabeled-MAPF/workflows/test_ubuntu/badge.svg?branch=public) | ![test_ubuntu](https://github.com/Kei18/unlabeled-MAPF/workflows/test_ubuntu/badge.svg?branch=dev) |
-
 ## Demo
 ![demo in a small field, flocking-like](/material/arena_100agents.gif)
 
@@ -22,8 +17,10 @@ The implementations include: the makespan optimal algorithm [1] and TSWAP (sub-o
 ## Building
 
 ```
-git clone https://github.com/Kei18/unlabeled-MAPF.git --recursive
+cd { this repo }
 cd unlabeled-MAPF
+git clone https://github.com/google/googletest.git third_party/googletest
+git clone https://github.com/openframeworks/openFrameworks.git third_party/openFrameworks
 mkdir build
 cd build
 cmake ..
@@ -107,10 +104,6 @@ cd build
 You can manipulate it via your keyboard. See printed info.
 
 
-## Experimental Environment
-[![v1.1](https://img.shields.io/badge/tag-v1.1-blue.svg?style=flat)](https://github.com/Kei18/unlabeled-MAPF/releases/tag/v1.1)
-
-
 ## Licence
 This software is released under the MIT License, see [LICENCE.txt](LICENCE.txt).
 
@@ -123,9 +116,6 @@ This software is released under the MIT License, see [LICENCE.txt](LICENCE.txt).
 - Scripts for the experiments are in `exp_scripts/`.
 - `tests/` include test scripts.
 - The implementation of ECBS-TA [2] can be obtained [Wolfgang's excellent repository](https://github.com/whoenig/libMultiRobotPlanning).
-
-## Author
-[Keisuke Okumura](https://kei18.github.io) is a Ph.D. candidate at Tokyo Institute of Technology, working on multiple moving agents.
 
 ## Reference
 1. Yu, J., & LaValle, S. M. (2013).
