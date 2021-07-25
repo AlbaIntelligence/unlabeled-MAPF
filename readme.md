@@ -18,7 +18,6 @@ The implementations include: the makespan optimal algorithm [1] and TSWAP (sub-o
 
 ```
 cd { this repo }
-cd unlabeled-MAPF
 git clone https://github.com/google/googletest.git third_party/googletest
 git clone https://github.com/openframeworks/openFrameworks.git third_party/openFrameworks
 mkdir build
@@ -87,7 +86,6 @@ Note: The script of openFrameworks seems to contain bugs. Check this [issue](htt
 
 ### macOS 11.4
 ```sh
-git submodule update --remote
 bash ./third_party/openFrameworks/scripts/osx/download_libs.sh
 cd visualizer
 make build
